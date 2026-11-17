@@ -1,0 +1,10 @@
+src/components/Layout.tsx
+src/components/sections/about/AboutStatementIconRow.tsx
+src/components/sections/contact/ContactDarkFormCard.tsx
+src/components/sections/faq/FaqTrayAccordion.tsx
+src/components/sections/features/FeaturesBentoWidgets.tsx
+src/components/sections/footer/FooterTrayWordmark.tsx
+src/components/sections/gallery/GalleryTiltCards.tsx
+src/components/sections/hero/HeroBoardFrame.tsx
+src/components/sections/testimonial/TestimonialSpotlightCarousel.tsx
+src/pages/HomePage.tsx

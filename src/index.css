@@ -1,0 +1,465 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&family=Outfit:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+@import "./styles/animations.css";
+@import "./styles/masks.css";
+
+@theme {
+  --breakpoint-lg: 55rem;
+}
+
+/* webild:theme-ai */
+:root {
+  --primary-cta: #2c3833;
+  --primary-cta-text: #ffffff;
+  --secondary-cta: #ffffff;
+  --secondary-cta-text: #1f2a26;
+  --background-accent: #7ff0b8;
+
+  --background: #e7f0ec;
+  --foreground: #1f2a26;
+  --card: #ffffff;
+  --card-foreground: var(--foreground);
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+  --primary: var(--primary-cta);
+  --primary-foreground: var(--primary-cta-text);
+  --secondary: var(--secondary-cta);
+  --secondary-foreground: var(--secondary-cta-text);
+  --muted: #f3f8f6;
+  --muted-foreground: #52615a;
+  --accent: var(--background-accent);
+  --accent-foreground: #1f2a26;
+  --deep: #2c3833;
+  --deep-foreground: #ffffff;
+  --destructive: #e5484d;
+  --destructive-foreground: #161616;
+  --border: #dbe7e1;
+  --input: #d8dde5;
+  --ring: var(--primary-cta);
+
+  --font-heading: "Outfit", "Inter Display", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", "Inter Display", ui-sans-serif, system-ui, sans-serif;
+  --heading-weight: 400;
+  --heading-tracking: -0.04em;
+  --heading-leading: 1.2;
+  --text-display: clamp(2.75rem, 1.729rem + 4.19vw, 5.5rem);
+  --text-h1: clamp(2.25rem, 1.786rem + 1.905vw, 3.5rem);
+  --text-h2: clamp(1.625rem, 1.393rem + 0.952vw, 2.25rem);
+  --text-h3: clamp(1.5rem, 1.314rem + 0.762vw, 2rem);
+  --text-body-lg: clamp(1rem, 0.954rem + 0.19vw, 1.125rem);
+  --text-body: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
+  --text-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --text-label: 0.875rem;
+  --label-tracking: 0em;
+  --label-case: none;
+
+  --gutter: clamp(1.5rem, 1.129rem + 1.524vw, 2.5rem);
+  --max-w: 1280px;
+  --container: min(100% - 2 * var(--gutter), var(--max-w));
+  --panel-inset: clamp(0.5rem, 0.314rem + 0.762vw, 1rem);
+  --section-space: clamp(5rem, 4.071rem + 3.81vw, 7.5rem);
+  --gap: clamp(1rem, 0.814rem + 0.762vw, 1.5rem);
+  --grid-columns: 12;
+
+  --radius: 1.5rem;
+  --radius-card: 1.5rem;
+  --radius-button: 1rem;
+  --radius-image: 1rem;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 0.4s;
+  --dur-base: 0.8s;
+  --dur-slow: 1s;
+  --reveal-distance: 3rem;
+
+  --chip-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h16M13 5l7 7-7 7'/%3E%3C/svg%3E");
+
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-deep: var(--deep);
+  --color-deep-foreground: var(--deep-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-heading);
+  --font-mono: var(--font-body);
+
+  --radius-sm: calc(var(--radius) - 12px);
+  --radius-md: calc(var(--radius) - 8px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+    outline-color: color-mix(in srgb, var(--color-ring) 30%, transparent);
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-foreground);
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: "Inter", "Inter Display", ui-sans-serif, system-ui, sans-serif;
+    font-weight: 400;
+    font-optical-sizing: auto;
+    letter-spacing: 0;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Outfit", "Inter Display", ui-sans-serif, system-ui, sans-serif;
+    font-weight: var(--heading-weight);
+    letter-spacing: var(--heading-tracking);
+    line-height: var(--heading-leading);
+    text-transform: none;
+  }
+}
+
+@layer components {
+  .btn-primary,
+  .btn-secondary {
+    position: relative;
+    isolation: isolate;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    --b-h: 3rem;
+    --b-in: 0.25rem;
+    --b-chip: 2.5rem;
+    --b-r: var(--radius-button);
+    --b-cr: calc(var(--radius-button) - 0.25rem);
+    --b-arrow: 1.125rem;
+    --b-gap: 1rem;
+    --b-end: 1.5rem;
+    --b-ease: cubic-bezier(0.44, 0, 0.56, 1);
+    min-height: var(--b-h);
+    padding: var(--b-in) var(--b-end) var(--b-in) calc(var(--b-in) + var(--b-chip) + var(--b-gap));
+    border-radius: var(--b-r);
+    overflow: hidden;
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: var(--label-tracking);
+    text-transform: var(--label-case);
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+      color 0.3s var(--b-ease),
+      padding 0.4s var(--b-ease),
+      background-color var(--dur-fast) var(--ease-out),
+      transform var(--dur-fast) var(--ease-out);
+  }
+
+  .btn-sm {
+    --b-h: 2.25rem;
+    --b-in: 0.125rem;
+    --b-chip: 2rem;
+    --b-r: 0.75rem;
+    --b-cr: 0.625rem;
+    --b-arrow: 1rem;
+    --b-gap: 0.75rem;
+    --b-end: 1.375rem;
+    font-size: 0.875rem;
+  }
+
+  .btn-lg {
+    --b-h: 4rem;
+    --b-chip: 3.5rem;
+    --b-r: 1.25rem;
+    --b-cr: 1rem;
+    --b-arrow: 1.5rem;
+    --b-end: 1.75rem;
+    font-size: var(--text-body-lg);
+  }
+
+  .btn-primary::before,
+  .btn-secondary::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: var(--b-in);
+    bottom: var(--b-in);
+    left: var(--b-in);
+    width: var(--b-chip);
+    border-radius: var(--b-cr);
+    transition: width 0.4s var(--b-ease);
+  }
+
+  .btn-primary::after,
+  .btn-secondary::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: calc(var(--b-in) + (var(--b-chip) - var(--b-arrow)) / 2);
+    width: var(--b-arrow);
+    height: var(--b-arrow);
+    translate: 0 -50%;
+    -webkit-mask: var(--chip-arrow) center / contain no-repeat;
+    mask: var(--chip-arrow) center / contain no-repeat;
+    transition:
+      left 0.4s var(--b-ease),
+      background-color 0.3s var(--b-ease);
+  }
+
+  .btn-primary:hover,
+  .btn-secondary:hover {
+    padding-left: var(--b-end);
+    padding-right: calc(var(--b-in) + var(--b-chip) + var(--b-gap));
+  }
+
+  .btn-primary:hover::before,
+  .btn-secondary:hover::before {
+    width: calc(100% - 2 * var(--b-in));
+  }
+
+  .btn-primary:hover::after,
+  .btn-secondary:hover::after {
+    left: calc(100% - var(--b-in) - (var(--b-chip) + var(--b-arrow)) / 2);
+  }
+
+  .btn-primary:active,
+  .btn-secondary:active {
+    transform: scale(0.97);
+  }
+
+  .btn-primary {
+    background: color-mix(in srgb, var(--primary) 88%, var(--primary-foreground));
+    color: var(--primary-foreground);
+  }
+
+  .btn-primary::before {
+    background: var(--accent);
+  }
+
+  .btn-primary::after {
+    background: var(--accent-foreground);
+  }
+
+  .btn-primary:hover {
+    color: var(--primary);
+  }
+
+  .btn-secondary {
+    background: var(--background);
+    color: color-mix(in srgb, var(--foreground) 75%, transparent);
+  }
+
+  .btn-secondary::before {
+    background: var(--card);
+  }
+
+  .btn-secondary::after {
+    background: var(--foreground);
+  }
+
+  .btn-secondary:hover {
+    color: var(--foreground);
+  }
+
+  .btn-primary.btn-lime,
+  [data-button="lime"] .btn-primary {
+    background: var(--accent);
+    color: var(--accent-foreground);
+  }
+
+  .btn-primary.btn-lime::before,
+  [data-button="lime"] .btn-primary::before {
+    background: var(--deep);
+  }
+
+  .btn-primary.btn-lime::after,
+  [data-button="lime"] .btn-primary::after {
+    background: var(--accent);
+  }
+
+  .btn-primary.btn-lime:hover,
+  [data-button="lime"] .btn-primary:hover {
+    color: var(--deep-foreground);
+  }
+
+  .btn-secondary.btn-nav {
+    background: var(--card);
+    color: var(--card-foreground);
+  }
+
+  .btn-secondary.btn-nav::before {
+    background: var(--background);
+  }
+
+  .btn-secondary.btn-nav::after {
+    background: var(--card-foreground);
+  }
+
+  .btn-secondary.btn-nav:hover {
+    color: var(--card-foreground);
+  }
+
+  [data-tone="deep"] {
+    --foreground: var(--deep-foreground);
+    --muted-foreground: #52615a;
+  }
+
+  [data-tone="deep"] :is(.bg-card, .kit-card) {
+    --foreground: var(--card-foreground);
+    --muted-foreground: #52615a;
+  }
+
+  [data-tone="deep"] .btn-primary {
+    background: var(--accent);
+    color: var(--accent-foreground);
+  }
+
+  [data-tone="deep"] .btn-primary::before {
+    background: var(--deep-foreground);
+  }
+
+  [data-tone="deep"] .btn-primary::after {
+    background: var(--accent-foreground);
+  }
+
+  [data-tone="deep"] .btn-primary:hover {
+    color: var(--deep);
+  }
+
+  .btn-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--foreground);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: color-mix(in srgb, var(--foreground) 30%, transparent);
+    text-underline-offset: 0.25em;
+    transition:
+      color var(--dur-fast) var(--ease-out),
+      text-decoration-color var(--dur-fast) var(--ease-out);
+  }
+
+  .btn-link:hover {
+    color: var(--muted-foreground);
+    text-decoration-color: currentColor;
+  }
+
+  [data-button="pill"] .btn-primary,
+  [data-button="pill"] .btn-secondary {
+    padding: 0.25rem 1.5rem;
+    border-radius: 999px;
+  }
+
+  [data-button="pill"] .btn-primary::before,
+  [data-button="pill"] .btn-secondary::before {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    border-radius: inherit;
+  }
+
+  [data-button="pill"] .btn-primary::after,
+  [data-button="pill"] .btn-secondary::after {
+    display: none;
+  }
+
+  [data-button="pill"] .btn-primary:hover::before,
+  [data-button="pill"] .btn-secondary:hover::before {
+    width: 100%;
+  }
+
+  .kit-card {
+    background: var(--card);
+    color: var(--card-foreground);
+    border-radius: var(--radius-card);
+  }
+
+  [data-card="white"] .kit-card {
+    background: var(--card);
+    box-shadow: 0 0 0 1px var(--border);
+  }
+
+  [data-card="deep"] .kit-card {
+    background: var(--deep);
+    color: var(--deep-foreground);
+  }
+
+  .kit-pattern {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  main:has(> .kit-pattern) {
+    position: relative;
+    isolation: isolate;
+  }
+
+  [data-pattern="haze"] .kit-pattern {
+    display: block;
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 140svh;
+    background: linear-gradient(to bottom, var(--card) 0%, color-mix(in oklch, var(--card) 0%, var(--background)) 100%);
+  }
+
+  [data-pattern="glow"] .kit-pattern {
+    display: block;
+    background:
+      radial-gradient(40% 35% at 15% 10%, color-mix(in oklch, var(--accent) 18%, transparent), transparent 70%),
+      radial-gradient(45% 40% at 90% 20%, color-mix(in oklch, var(--secondary) 90%, transparent), transparent 70%);
+  }
+}
+
+[data-wash] {
+  mix-blend-mode: luminosity;
+}
+
+[data-wash-frame] {
+  background-color: color-mix(in oklab, var(--deep) 30%, var(--card));
+}
+
+.kit-accent-tint {
+  background-color: color-mix(in oklab, var(--accent) 30%, var(--secondary));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary,
+  .btn-secondary,
+  .btn-primary::before,
+  .btn-secondary::before,
+  .btn-link {
+    transition: none;
+  }
+}
