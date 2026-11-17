@@ -23,7 +23,7 @@ export default function HomePage() {
         <HeroBoardFrame
           className="bg-transparent"
           tag="Leeds family plumbers"
-          title="Clear answers for leaks and cold boilers"
+          title="Leeds plumbers you can count on"
           description="Family-run emergency plumbing across Leeds. We find leaks fast, fix boilers, and keep your home warm without callout fees."
           primaryButton={{
             text: "Request a repair",
